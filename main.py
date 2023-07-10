@@ -34,6 +34,10 @@ if __name__ == '__main__':
 		else:
 			sys.exit("Invalid input!")
 
+	except Exception as e:
+		raise e
+
+	# plot configurations
 	fig, ax = plt.subplots(num= 'Sorting Algorithm Visualizer')
 	ax.set_title(algo_dict[algo])
 	plt.xlabel('Elements being sorted')
@@ -47,3 +51,20 @@ if __name__ == '__main__':
 		for rect, val in zip(bar_rec, li):
 			rect.set_height(val)
 			ax.set_xticklabels(li) #also changing xticks labels to match with changing bars.
+		# to update step count
+		step_cnt += 1
+		step_text.set_text('No. of steps: {}'.format(step_cnt))
+
+	# at each 'frames' it calls 'func' function, which then modifies the plot based on 'li' at that time.
+	anim = animation.FuncAnimation(fig, func=update_fig, frames=generator_func, interval=ms_speed, repeat=False)
+	plt.show()
+
+	# Above animation is working like this.
+	# for i in BubbleSort(li):
+	# 	for rect, j in zip(bar_rec, li):
+	# 		rect.set_height(j)
+	# 		ax.set_xticklabels(li)
+	# 		fig.canvas.draw()
+	# 		plt.pause(0.0001)		
+	# plt.show()
+	
