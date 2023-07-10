@@ -36,3 +36,12 @@ if __name__ == '__main__':
 
 	except Exception as e:
 		raise e
+	# plot configurations
+	fig, ax = plt.subplots(num= 'Sorting Algorithm Visualizer')
+	ax.set_title(algo_dict[algo])
+	plt.xlabel('Elements being sorted')
+	bar_rec = ax.bar(range(len(li)), li, tick_label=li)  #container for bar diagram.
+	# by using plt.gcf().transFigure, (0,0) is the bottom left and (1,1) is the top right of the figure
+	plt.text(0.015, 0.94, 'input:{}'.format(str(li)), fontsize=10, transform=plt.gcf().transFigure) #to show input data
+	step_text = plt.text(0.015, 0.90, "", fontsize=10, transform=plt.gcf().transFigure) #to show no. steps
+
