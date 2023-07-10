@@ -34,9 +34,6 @@ if __name__ == '__main__':
 		else:
 			sys.exit("Invalid input!")
 
-	except Exception as e:
-		raise e
-	# plot configurations
 	fig, ax = plt.subplots(num= 'Sorting Algorithm Visualizer')
 	ax.set_title(algo_dict[algo])
 	plt.xlabel('Elements being sorted')
@@ -45,3 +42,8 @@ if __name__ == '__main__':
 	plt.text(0.015, 0.94, 'input:{}'.format(str(li)), fontsize=10, transform=plt.gcf().transFigure) #to show input data
 	step_text = plt.text(0.015, 0.90, "", fontsize=10, transform=plt.gcf().transFigure) #to show no. steps
 
+	def update_fig(li):
+		global step_cnt
+		for rect, val in zip(bar_rec, li):
+			rect.set_height(val)
+			ax.set_xticklabels(li) #also changing xticks labels to match with changing bars.
