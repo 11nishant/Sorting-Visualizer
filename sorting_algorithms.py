@@ -19,3 +19,12 @@ def BubbleSort(li):
 				yield li #so that any update in data can be visualized at each iteration.
 		if not swapped:  #when list is already sorted.
 			break
+		
+def MergeSort(li, low, high):
+	if high <= low:
+		return
+	mid = (low+high)//2
+	yield from MergeSort(li, low, mid)
+	yield from MergeSort(li, mid+1, high)
+	yield from merge(li, low, mid, high)
+	yield li
